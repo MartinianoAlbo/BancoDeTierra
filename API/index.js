@@ -8,7 +8,7 @@ const cors = require('cors')
 const app = express();
 
 //Asegurar la Rest (para que no cualquiera pueda ver los datos solo la direccion especificada)
-const whitelist = '[http://localhost:3000]';
+const whitelist = 'http://localhost:3000';
 const corsOptions = {
    
    origin: (origin, callback) => {

@@ -1,71 +1,34 @@
-import React, {useState} from 'react';
-import { 
-  BrowserRouter, 
-  Routes,
-  Route
-} 
-from 'react-router-dom';
+import React, { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 //Componentes
-import NuevoTerreno from './components/NuevoTerreno';
+import NuevoTerreno from './components/NuevoTerreno'
 import BuscarTerreno from './components/BuscarTerreno'
-import TerrenoEncontrado from './components/TerrenoEncontrado';
-
-
-
+import Terreno from './components/Terreno'
+import EditarTerreno from './components/EditarTerreno'
 
 function App() {
-
   //state de la app
-  const [numeroPadron, setTerreno] = useState([]);
-
-  // const {state} = useClienteAxios([]);
-
-  // console.log(numeroPadron);
-
-  // useEffect( ()=> {
-  //   const consultarAPI = () => {
-      
-  //       clienteAxios.get('/terrenos')
-  //       .then(respuesta => {
-  //        setTerreno(respuesta.data);
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       })
-  //   }
-  //   consultarAPI();
-  // }, []);
-
+  const [terreno, setTerreno] = useState()
 
 
   return (
     <BrowserRouter>
-
       <Routes>
-        <Route
-         path="/"
-         element={<BuscarTerreno  setTerreno={setTerreno} />} 
-        />
+        <Route path="/" element={<BuscarTerreno setTerreno={setTerreno} />} />
 
-        <Route 
-          path='/encontrar-terreno' 
-          element={<TerrenoEncontrado numeroPadron={numeroPadron}/>} 
-        />
-      {/*       
-        <Route
-          path="/lista-terrenos"
-          element={<Terrenos numeroPadron={numeroPadron} />}
-        /> */}
+        <Route path="/terreno" element={<Terreno terreno={terreno} />} />
+
+        <Route path="/nuevo-terreno" element={<NuevoTerreno />} />
 
         <Route
-          path="/nuevo-terreno"
-          element={<NuevoTerreno setTerreno={setTerreno} />}
+          path="/editar-terreno"
+          element={<EditarTerreno terreno={terreno} />}
         />
-        
       </Routes>
+      
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

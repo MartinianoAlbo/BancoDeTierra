@@ -16,7 +16,6 @@ exports.nuevoTerreno = async (req, res, next) => {
       next();
    }
 
-   res.json({ mensaje: 'desde nuevo cliente' })
 }
 
 // Obtener todos los terrenos
@@ -56,11 +55,12 @@ exports.obtenerTerreno = async (req, res, next) => {
 // actualizar terreno por padron
 exports.actualizarTerreno = async (req, res, next) => {
 
-   const {padron}=req.params
+   const {_id}=req.params
+
    try {
       const terrenoActualizado = await Terreno.findOneAndUpdate(
          {
-            padron: padron
+            _id: _id
          },
          req.body,
          {
@@ -82,7 +82,7 @@ exports.eliminarTerreno = async(req, res, next) => {
 
    try {
       await Terreno.findByIdAndRemove({
-         _id:req.params.id
+         _id:req.params._id
       })
       res.json({ mensaje: 'Eliminado exitosamente' })
       

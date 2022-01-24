@@ -10,6 +10,10 @@ const terrenosSchema = new Schema({
       type: String,
       trim:true
    },
+   numero_expediente: {
+      type: String,
+      trim:true
+   },
    propietario: {
       type: String,
       trim:true
